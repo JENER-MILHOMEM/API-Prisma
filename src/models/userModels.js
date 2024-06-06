@@ -2,6 +2,9 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient()
 
 const createUser = async(data)=>{
+
+      
+  
     return await prisma.user.create({
         data:{
             email : data.email,
@@ -11,7 +14,7 @@ const createUser = async(data)=>{
     })
 }
 const getAll = async()=>{
-   return await prisma.findMuser.any()
+   return await prisma.user.findMany();
 }
 
 const update = async(req)=>{

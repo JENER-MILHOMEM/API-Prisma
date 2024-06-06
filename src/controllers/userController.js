@@ -16,6 +16,7 @@ const getAll = async(req, res)=>{
         res.status(200).send(user)
     } catch (error) {
         res.status(500).send(error)
+        console.log(error);
     }
 }
 const update = async(req, res)=>{
