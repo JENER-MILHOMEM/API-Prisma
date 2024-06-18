@@ -25,15 +25,18 @@ const update = async(req, res)=>{
         res.status(202).send(user)
     } catch (error) {
         res.status(404).send(error)
-        console.log(error);
+        console.log("deu erro");
+        console.log(error)
     }
 }
+
 const deleteUser = async(req, res)=>{
     try {
-        const user = await userModels.deleteUser(req.params.id)
+        const user = await userModels.deleteUser(req)
         res.status(202).send(user)
     } catch (error) {
-        res.status(400).send(error);
+        res.status(404).send(error)
+        console.log(error);
     }
 }
 

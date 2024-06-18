@@ -2,24 +2,21 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient()
 
 const createUser = async(data)=>{
-
-      
-  
-    return await prisma.user.create({
-        data:{
-            email : data.email,
-            senha : data.senha,
-            nome : data.nome,
+    return prisma.user.create({
+        data: {
+            email: data.email,
+            senha: data.senha,
+            nome: data.nome,
         }
-    })
+    });
 }
 const getAll = async()=>{
-   return await prisma.user.findMany();
+   return prisma.user.findMany();
 }
 
 const update = async(req)=>{
     const data = req.body
-    return await prisma.user.update({
+    return  prisma.user.update({
       where: {
         id: Number(req.params.id),
       },
@@ -30,16 +27,18 @@ const update = async(req)=>{
       },
     });
 }
-const deleteUser = async(id)=>{
-    return await prisma.user.delete({
-  where: {
-    id: Number(id),
-  },
-})
+
+const deleteUser = async(req)=>{
+    return prisma.user.delete({
+        where: {
+          id: Number(req.params.id),
+        },
+      });
 }
+
 module.exports = {
     createUser,
     getAll,
     update,
-    deleteUser  
+    deleteUser
 }

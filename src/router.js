@@ -12,7 +12,8 @@ router.post('/user',usermiddleware.validation, userController.create)
 router.put('/user/:id', userController.update)
 
 router.delete('/user/:id', userController.deleteUser)
-router.post('/auth', authController.autenticate)
 
+router.post('/login', authController.autenticate)
+router.get('/login', authController.autenticate)
 
 module.exports = router
